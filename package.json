@@ -1,0 +1,28 @@
+{
+  "name": "mydocslco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vatsalyrai/mydocslco.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vatsalyrai/mydocslco/issues"
+  },
+  "homepage": "https://github.com/vatsalyrai/mydocslco#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "i": "^0.3.7",
+    "nodemon": "^2.0.20",
+    "npm": "^9.2.0",
+    "swagger-ui-express": "^4.6.0",
+    "yamljs": "^0.3.0"
+  }
+}
