@@ -45,6 +45,17 @@ let courses = [
   app.get("/api/v1/courses", (req, res) => {
     res.send(courses);
   });
+
+  app.get("/api/v1/mycourse/:courseId", (req, res) => {
+    const myCourse = courses.find((course) => course.id === req.params.courseId);
+    res.send(myCourse);
+  });
+  
+  app.post("/api/v1/addCourse", (req, res) => {
+    console.log(req.body);
+    courses.push(req.body);
+    res.send(true);
+  });
   
 
 app.listen(4000 , ()=>{
