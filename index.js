@@ -5,8 +5,9 @@ const app = express()
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
-
+const fileUpload = require("express-fileupload");
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(fileUpload()); // middlware which will handle file upload incase any image comes up and give that to us in res.files
 
 
 
@@ -56,7 +57,24 @@ let courses = [
     courses.push(req.body);
     res.send(true);
   });
+
+  app.get("/api/v1/coursequery", (req, res) => {
+    let location = req.query.location;
+    let device = req.query.device;
   
+    res.send({ location, device });
+  });
+  
+  app.post("/api/v1/courseupload", (req, res) => {
+    console.log(req.headers);
+    const file = req.files.file;
+    console.log(file);
+    let path = __dirname + "/images/" + Date.now() + ".jpg"; // this is the path name that we have created and __dirname gives path of the project
+  
+    file.mv(path, (err) => { // moving file to the given path parameter
+      res.send(true);
+    });
+  });
 
 app.listen(4000 , ()=>{
     console.log("Server is running at port 4000...")
